@@ -9,6 +9,7 @@ const Table = styled.table`
 const Grid = styled.td`
 	text-align: center;
 	padding-top: 10px;
+	cursor: pointer;
 	color: ${(props) => props.outside ? '#eee' : '#000'}
 `;
 
