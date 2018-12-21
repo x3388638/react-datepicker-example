@@ -19,15 +19,16 @@ export default class Calendar extends React.PureComponent {
 		this.state = {
 			year,
 			month,
-			day
+			day,
+			tableType: 'day' // 'day', 'month', 'year'
 		};
 	}
 
 	render() {
 		return (
 			<Container>
-				<Switch />
-				<TableContainer />
+				<Switch year={ this.state.year } month={ this.state.month } />
+				<TableContainer year={ this.state.year } month={ this.state.month } day={ this.state.day } type={ this.state.tableType } />
 			</Container>
 		);
 	}

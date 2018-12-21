@@ -47,10 +47,11 @@ const Next = styled.span`
 
 export default class Switch extends React.PureComponent {
 	render() {
+		const monthName = ['', 'Jun', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 		return (
 			<Container>
 				<Prev><FontAwesomeIcon icon="chevron-left" /></Prev>
-				<Text>May 2018</Text>
+				<Text>{ `${ monthName[this.props.month] } ${ this.props.year }` }</Text>
 				<Next><FontAwesomeIcon icon="chevron-right" /></Next>
 			</Container>
 		)
