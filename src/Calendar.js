@@ -3,7 +3,7 @@ import moment from 'moment'
 import styled from 'styled-components';
 
 import Switch from './Switch';
-import Table from './Table';
+import TableContainer from './TableContainer';
 
 const Container = styled.div`
 	display: inline-block;
@@ -27,7 +27,7 @@ export default class Calendar extends React.PureComponent {
 		return (
 			<Container>
 				<Switch />
-				<Table />
+				<TableContainer />
 			</Container>
 		);
 	}
