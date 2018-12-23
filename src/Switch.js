@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Container = styled.div`
-	width: 200px;
+	width: 300px;
 	display: flex;
 	margin-bottom: 10px;
 `;

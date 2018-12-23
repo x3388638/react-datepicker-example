@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Table = styled.table`
-	width: 200px;
+	width: 300px;
 	table-layout: fixed;
 `;
 
 const Grid = styled.td`
 	text-align: center;
-	padding-top: 10px;
+	padding: 10px;
+    border-radius: 50px;
 	cursor: pointer;
 	color: ${(props) => {
 		if (props.outside) {
