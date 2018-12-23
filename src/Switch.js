@@ -51,7 +51,7 @@ export default class Switch extends React.PureComponent {
 		return (
 			<Container>
 				<Prev><FontAwesomeIcon icon="chevron-left" /></Prev>
-				<Text>{ `${ monthName[+this.props.month] } ${ this.props.year }` }</Text>
+				<Text onClick={ this.props.onChange }>{ `${ monthName[+this.props.month] } ${ this.props.year }` }</Text>
 				<Next><FontAwesomeIcon icon="chevron-right" /></Next>
 			</Container>
 		)

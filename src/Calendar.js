@@ -24,6 +24,7 @@ export default class Calendar extends React.PureComponent {
 		};
 
 		this.handleChange = this.handleChange.bind(this);
+		this.handleChangeTable = this.handleChangeTable.bind(this);
 	}
 
 	handleChange(changeType, changeTo) {
@@ -35,13 +36,38 @@ export default class Calendar extends React.PureComponent {
 					day: changeTo.day,
 					tableType: 'day'
 				});
+				break;
+			default:
+				return;
+		}
+	}
+
+	handleChangeTable() {
+		switch (this.state.tableType) {
+			case 'day':
+				this.setState({
+					tableType: 'month'
+				});
+				break;
+			case 'month':
+				this.setState({
+					tableType: 'year'
+				});
+				break;
+			default:
+				return;
 		}
 	}
 
 	render() {
 		return (
 			<Container>
-				<Switch year={ this.state.year } month={ this.state.month } />
+				<Switch
+					year={ this.state.year }
+					month={ this.state.month }
+					type={ this.state.tableType }
+					onChange={ this.handleChangeTable }
+				/>
 				<TableContainer
 					year={ this.state.year }
 					month={ this.state.month }

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Table = styled.table`
-	width: 200px;
+	width: 300px;
 	table-layout: fixed;
 `;
 
