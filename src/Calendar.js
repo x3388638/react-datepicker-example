@@ -70,6 +70,12 @@ export default class Calendar extends React.PureComponent {
 					month: newMonth,
 					day: newDay
 				});
+				break;
+			case 'month':
+				this.setState({
+					year: +this.state.year + type
+				});
+				break;
 		}
 	}
 
