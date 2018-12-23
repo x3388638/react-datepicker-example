@@ -48,10 +48,26 @@ const Next = styled.span`
 export default class Switch extends React.PureComponent {
 	render() {
 		const monthName = ['', 'Jun', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		let title = '';
+		switch (this.props.type) {
+			case 'year':
+				const start = this.props.year - (this.props.year % 10);
+				const end = start + 9;
+				title = `${start} - ${end}`;
+				break;
+			case 'month':
+				title = this.props.year;
+				break;
+			case 'day':
+			default:
+				title = `${ monthName[this.props.month] } ${ this.props.year }`;
+				break;
+		}
+
 		return (
 			<Container>
 				<Prev><FontAwesomeIcon icon="chevron-left" /></Prev>
-				<Text onClick={ this.props.onChange }>{ `${ monthName[+this.props.month] } ${ this.props.year }` }</Text>
+				<Text onClick={ this.props.onChange }>{ title }</Text>
 				<Next><FontAwesomeIcon icon="chevron-right" /></Next>
 			</Container>
 		)
