@@ -84,7 +84,16 @@ export default class Calendar extends React.PureComponent {
 				break;
 			case 'month':
 				this.setState({
-					year: this.padNum(+this.state.year + type, 4)
+					year: this.padNum(+this.state.year + type, 4),
+					month: '01'
+				});
+				break;
+			case 'year':
+			default:
+				let tmpYear = +this.state.year + 10 * type;
+				tmpYear -= (tmpYear % 10);
+				this.setState({
+					year: this.padNum(tmpYear, 4)
 				});
 				break;
 		}

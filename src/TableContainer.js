@@ -48,21 +48,35 @@ export default class TableContainer extends React.PureComponent {
 					});
 				}
 
-				const rows = [[], [], [], [], [], []];
+				const dayRows = [[], [], [], [], [], []];
 				days.forEach((val, i) => {
 					const index = parseInt(i / 7);
 					if (index > 5) {
 						return;
 					}
 
-					rows[index].push(val);
+					dayRows[index].push(val);
 				});
 
-				return <DayTable days={ rows } onChange={ this.props.onChange }/>
+				return <DayTable days={ dayRows } onChange={ this.props.onChange }/>
 			case 'month':
 				return <MonthTable year={ this.props.year } month={ this.props.month } onChange={ this.props.onChange } />;
 			case 'year':
-				return <YearTable />;
+				const yearList = [];
+				const rangeStart = year - (year % 10);
+				const rangeEnd = rangeStart + 9;
+				yearList.push({ year: rangeStart - 1, outside: true });
+				for (let i = rangeStart; i <= rangeEnd; i ++) {
+					yearList.push({ year: i });
+				}
+
+				yearList.push({ year: rangeEnd + 1, outside: true });
+				const yearRows = [[], [], []];
+				yearList.forEach((y, i) => {
+					yearRows[parseInt(i / 4)].push(y);
+				});
+
+				return <YearTable year={ year } yearList={ yearRows } />;
 			default:
 				return;
 		}

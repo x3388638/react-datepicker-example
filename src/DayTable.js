@@ -26,6 +26,7 @@ const Grid = styled.td`
 	}};
 	&:hover {
 		background: #eee;
+		color: ${(props) => props.outside && '#fff'};
 	}
 	background: ${(props) => props.selected && '#db3d44 !important'}
 `;
