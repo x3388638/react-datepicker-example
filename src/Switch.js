@@ -60,15 +60,15 @@ export default class Switch extends React.PureComponent {
 				break;
 			case 'day':
 			default:
-				title = `${ monthName[this.props.month] } ${ this.props.year }`;
+				title = `${ monthName[+this.props.month] } ${ this.props.year }`;
 				break;
 		}
 
 		return (
 			<Container>
-				<Prev><FontAwesomeIcon icon="chevron-left" /></Prev>
+				<Prev onClick={ this.props.onPrev }><FontAwesomeIcon icon="chevron-left" /></Prev>
 				<Text onClick={ this.props.onChange }>{ title }</Text>
-				<Next><FontAwesomeIcon icon="chevron-right" /></Next>
+				<Next onClick={ this.props.onNext }><FontAwesomeIcon icon="chevron-right" /></Next>
 			</Container>
 		)
 	}

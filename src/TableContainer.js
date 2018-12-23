@@ -39,7 +39,7 @@ export default class TableContainer extends React.PureComponent {
 				
 				// 下個月的部分
 				const [yearOfNextMonth, nextMonth] = moment(`${ year }-${ month }-01`).add(1, 'month').format('YYYY-MM').split('-');
-				for (let i = 1; i <= 11; i ++) {
+				for (let i = 1; i <= 14; i ++) {
 					days.push({
 						year: yearOfNextMonth,
 						month: nextMonth,
