@@ -59,6 +59,7 @@ export default class YearTable extends React.PureComponent {
 												outside={ year.outside }
 												today={ isCUrrent }
 												selected={ selected }
+												onClick={() => { this.props.onChange('year', year.year) }}
 											>
 												{ year.year }
 											</Grid>

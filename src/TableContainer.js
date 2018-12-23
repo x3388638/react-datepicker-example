@@ -76,7 +76,7 @@ export default class TableContainer extends React.PureComponent {
 					yearRows[parseInt(i / 4)].push(y);
 				});
 
-				return <YearTable year={ year } yearList={ yearRows } />;
+				return <YearTable year={ year } yearList={ yearRows } onChange={ this.props.onChange } />;
 			default:
 				return;
 		}

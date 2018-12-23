@@ -49,7 +49,13 @@ export default class Calendar extends React.PureComponent {
 					tableType: 'day'
 				});
 				break;
+			case 'year':
 			default:
+				this.setState({
+					year: this.padNum(changeTo, 4),
+					month: '01',
+					tableType: 'month'
+				});
 				return;
 		}
 	}
