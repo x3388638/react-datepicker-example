@@ -10,10 +10,37 @@ const Grid = styled.td`
 	text-align: center;
 	padding-top: 10px;
 	cursor: pointer;
-	color: ${(props) => props.outside ? '#eee' : '#000'}
+	color: ${(props) => {
+		if (props.outside) {
+			return '#eee';
+		} else {
+			if (props.selected) {
+				return '#fff'
+			}
+
+			if (props.today) {
+				return '#db3d44'
+			}
+
+			return '#000'
+		}
+	}}
+	&:hover {
+		background: #eee;
+	}
+	background: ${(props) => props.selected && '#db3d44 !important'}
 `;
 
 export default class DayTable extends React.PureComponent {
+	constructor(props) {
+		super(props);
+		this.handleSelectDay = this.handleSelectDay.bind(this);
+	}
+
+	handleSelectDay(date) {
+		console.log(date);
+	}
+
 	render() {
 		return (
 			<Table>
@@ -29,24 +56,25 @@ export default class DayTable extends React.PureComponent {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<Grid outside>29</Grid>
-						<Grid outside>30</Grid>
-						<Grid>1</Grid>
-						<Grid>2</Grid>
-						<Grid>3</Grid>
-						<Grid>4</Grid>
-						<Grid>5</Grid>
-					</tr>
-					<tr>
-						<Grid>6</Grid>
-						<Grid>7</Grid>
-						<Grid>8</Grid>
-						<Grid>9</Grid>
-						<Grid>10</Grid>
-						<Grid>11</Grid>
-						<Grid>12</Grid>
-					</tr>
+					{
+						this.props.days.map((week, i) => (
+							<tr key={ i }>
+								{
+									week.map((day, j) => (
+										<Grid
+											key={ j }
+											outside={ day.outside }
+											today={ day.today }
+											selected={ day.selected }
+											onClick={() => { this.handleSelectDay(day) }}
+										>
+											{ day.day }
+										</Grid>
+									))
+								}
+							</tr>
+						))
+					}
 				</tbody>
 			</Table>
 		)
