@@ -22,13 +22,33 @@ export default class Calendar extends React.PureComponent {
 			day,
 			tableType: 'day' // 'day', 'month', 'year'
 		};
+
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	handleChange(changeType, changeTo) {
+		switch (changeType) {
+			case 'day':
+				this.setState({
+					year: changeTo.year,
+					month: changeTo.month,
+					day: changeTo.day,
+					tableType: 'day'
+				});
+		}
 	}
 
 	render() {
 		return (
 			<Container>
 				<Switch year={ this.state.year } month={ this.state.month } />
-				<TableContainer year={ this.state.year } month={ this.state.month } day={ this.state.day } type={ this.state.tableType } />
+				<TableContainer
+					year={ this.state.year }
+					month={ this.state.month }
+					day={ this.state.day }
+					type={ this.state.tableType }
+					onChange={ this.handleChange }
+				/>
 			</Container>
 		);
 	}

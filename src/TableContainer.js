@@ -58,7 +58,7 @@ export default class TableContainer extends React.PureComponent {
 					rows[index].push(val);
 				});
 
-				return <DayTable days={ rows }/>
+				return <DayTable days={ rows } onChange={ this.props.onChange }/>
 		}
 	}
 }

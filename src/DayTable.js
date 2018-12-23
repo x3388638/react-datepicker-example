@@ -39,7 +39,7 @@ export default class DayTable extends React.PureComponent {
 	}
 
 	handleSelectDay(date) {
-		console.log(date);
+		this.props.onChange('day', date);
 	}
 
 	render() {
