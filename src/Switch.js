@@ -47,7 +47,7 @@ const Next = styled.span`
 
 export default class Switch extends React.PureComponent {
 	render() {
-		const monthName = ['', 'Jun', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		const monthName = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 		let title = '';
 		switch (this.props.type) {
 			case 'year':

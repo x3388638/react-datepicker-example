@@ -22,10 +22,8 @@ const Grid = styled.td`
 			if (props.today) {
 				return '#db3d44'
 			}
-
-			return '#000'
 		}
-	}}
+	}};
 	&:hover {
 		background: #eee;
 	}
