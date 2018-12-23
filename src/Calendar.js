@@ -10,22 +10,40 @@ const Container = styled.div`
 	border: 1px solid #afafaf;
 	padding: 20px 15px 40px 15px;
 	box-shadow: 0 0 10px 0px #afafaf;
+	position: absolute;
+	top: 40px;
+	left: 0px;
+	z-index: 999;
 `;
 
 export default class Calendar extends React.PureComponent {
 	constructor (props) {
 		super(props);
-		const [year, month, day] = moment().format('YYYY-MM-DD').split('-');
 		this.state = {
-			year, // string
-			month, // string
-			day, // string
+			year: '', // string
+			month: '', // string
+			day: '', // string
 			tableType: 'day' // 'day', 'month', 'year'
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleChangeTable = this.handleChangeTable.bind(this);
 		this.handlePrevOrNext = this.handlePrevOrNext.bind(this);
+	}
+
+	componentDidMount() {
+		let year, month, day;
+		if (this.props.date) {
+			[year, month, day] = this.props.date.split('-');
+		} else {
+			[year, month, day] = moment().format('YYYY-MM-DD').split('-');
+		}
+
+		this.setState({
+			year,
+			month,
+			day
+		});
 	}
 
 	padNum(num, l) {
@@ -40,7 +58,10 @@ export default class Calendar extends React.PureComponent {
 					month: this.padNum(changeTo.month, 2),
 					day: this.padNum(changeTo.day, 2),
 					tableType: 'day'
+				}, () => {
+					this.props.onSelect(moment(`${ this.state.year }-${ this.state.month }-${ this.state.day }`).format('YYYY-MM-DD'));
 				});
+
 				break;
 			case 'month':
 				this.setState({
@@ -106,7 +127,7 @@ export default class Calendar extends React.PureComponent {
 	}
 
 	render() {
-		return (
+		return !!this.state.year ? (
 			<Container>
 				<Switch
 					year={ this.state.year }
@@ -124,6 +145,6 @@ export default class Calendar extends React.PureComponent {
 					onChange={ this.handleChange }
 				/>
 			</Container>
-		);
+		) : null;
 	}
 }
