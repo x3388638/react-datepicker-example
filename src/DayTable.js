@@ -31,15 +31,6 @@ const Grid = styled.td`
 `;
 
 export default class DayTable extends React.PureComponent {
-	constructor(props) {
-		super(props);
-		this.handleSelectDay = this.handleSelectDay.bind(this);
-	}
-
-	handleSelectDay(date) {
-		this.props.onChange('day', date);
-	}
-
 	render() {
 		return (
 			<Table>
@@ -65,7 +56,7 @@ export default class DayTable extends React.PureComponent {
 											outside={ day.outside }
 											today={ day.today }
 											selected={ day.selected }
-											onClick={() => { this.handleSelectDay(day) }}
+											onClick={() => { this.props.onChange('day', day); }}
 										>
 											{ day.day }
 										</Grid>

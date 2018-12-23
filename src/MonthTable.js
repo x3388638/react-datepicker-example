@@ -61,11 +61,20 @@ export default class MonthTable extends React.PureComponent {
 											isCueentMonth = true;
 										}
 
-										if (+map[month] === +this.props.month) {
+										if (map[month] === +this.props.month) {
 											selected = true;
 										}
 
-										return <Grid key={ j } today={ isCueentMonth } selected={ selected }>{ month }</Grid>;
+										return (
+											<Grid
+												key={ j }
+												today={ isCueentMonth }
+												selected={ selected }
+												onClick={() => { this.props.onChange('month', map[month]) }}
+											>
+												{ month }
+											</Grid>
+										);
 									})
 								}
 							</tr>

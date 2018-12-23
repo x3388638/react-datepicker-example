@@ -17,9 +17,9 @@ export default class Calendar extends React.PureComponent {
 		super(props);
 		const [year, month, day] = moment().format('YYYY-MM-DD').split('-');
 		this.state = {
-			year,
-			month,
-			day,
+			year, // string
+			month, // string
+			day, // string
 			tableType: 'day' // 'day', 'month', 'year'
 		};
 
@@ -28,13 +28,24 @@ export default class Calendar extends React.PureComponent {
 		this.handlePrevOrNext = this.handlePrevOrNext.bind(this);
 	}
 
+	padNum(num, l) {
+		return num.toString().padStart(l, '0');
+	}
+
 	handleChange(changeType, changeTo) {
 		switch (changeType) {
 			case 'day':
 				this.setState({
-					year: changeTo.year,
-					month: changeTo.month,
-					day: changeTo.day,
+					year: this.padNum(changeTo.year, 4),
+					month: this.padNum(changeTo.month, 2),
+					day: this.padNum(changeTo.day, 2),
+					tableType: 'day'
+				});
+				break;
+			case 'month':
+				this.setState({
+					month: this.padNum(changeTo, 2),
+					day: '01',
 					tableType: 'day'
 				});
 				break;
@@ -73,7 +84,7 @@ export default class Calendar extends React.PureComponent {
 				break;
 			case 'month':
 				this.setState({
-					year: +this.state.year + type
+					year: this.padNum(+this.state.year + type, 4)
 				});
 				break;
 		}

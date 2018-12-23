@@ -60,7 +60,7 @@ export default class TableContainer extends React.PureComponent {
 
 				return <DayTable days={ rows } onChange={ this.props.onChange }/>
 			case 'month':
-				return <MonthTable year={ this.props.year } month={ this.props.month } />;
+				return <MonthTable year={ this.props.year } month={ this.props.month } onChange={ this.props.onChange } />;
 			case 'year':
 				return <YearTable />;
 			default:
